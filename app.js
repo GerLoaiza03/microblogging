@@ -4,7 +4,12 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
-require("dotenv").config();
+
+if (process.env.NODE_ENV !== 'production'){
+  require("dotenv").config();
+}
+const DB_URI = process.env.DB_URI;
+const PORT = process.env.PORT;
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
